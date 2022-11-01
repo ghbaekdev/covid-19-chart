@@ -7,6 +7,7 @@ import {
 } from '@tanstack/react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
+import Layout from '../components/Layout.tsx/Layout';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <ThemeProvider theme={theme}>
           <Hydrate state={pageProps?.dehydratedState}>
             <GlobalStyle />
-            <Component {...pageProps} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
           </Hydrate>
         </ThemeProvider>
       </QueryClientProvider>
