@@ -2,7 +2,7 @@ const theme = {
   colors: {
     black: '#000000',
     white: '#FFFFFF',
-    sideColor: '#2d3748',
+    sideColor: '#F8F8F8',
     mainColor: '#f0f0f0',
     footerColor: '#3B3B3B',
     ligthGrey: '#F4F4F4',
@@ -25,22 +25,6 @@ const theme = {
   align-items:${align};
   justify-content:${justify};
   `,
-  responsive: {
-    small: '500px',
-    medium: '768px',
-    large: '1000px',
-  },
-  text: {
-    spacing: '0.2rem',
-    fontWeight1: '100',
-    fontWeight2: '200',
-    fontWeight3: '400',
-    fontWeight4: '500',
-  },
-  effect: {
-    radius: '10px',
-    shadow: '6px 7px 13px 0px rgba(0,0,0,0.57)',
-  },
 };
 
 export default theme;
