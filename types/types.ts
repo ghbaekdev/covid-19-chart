@@ -18,6 +18,6 @@ export interface AgeGenderType {
 
 export interface AgeGenderDataType {
   data: {
-    item: AgeGenderType;
+    item: AgeGenderType[];
   };
 }

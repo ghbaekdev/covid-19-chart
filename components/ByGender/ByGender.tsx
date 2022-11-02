@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import * as S from '../ByAge/ByAge';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
@@ -29,26 +29,28 @@ const options = {
     },
   },
 };
-
+// `${covid.stateDt.slice(4, 6)}/${covid.stateDt.slice(6, 8)}`
 const ByGender = ({ data }: AgeGenderDataType) => {
   const stateDt = data?.item
-    .map(
-      (covid: AgeGenderType) =>
-        `${covid.stateDt.slice(4, 6)}/${covid.stateDt.slice(6, 8)}`
-    )
+    .map((covid: AgeGenderType) => covid.stateDt)
     .sort();
   const filterDate = new Set(stateDt);
-  const labels = [...filterDate];
+  const labels = Array.from(filterDate);
   const [selected, setSelected] = useState(labels[0]);
 
-  const male = data?.item.filter(
-    (covid: AgeGenderType) =>
-      covid.gubun === '남성' && covid.stateDt === '20211101'
-  )[0].confCase;
-  const female = data?.item.filter(
-    (covid: AgeGenderType) =>
-      covid.gubun === '여성' && covid.stateDt === '20211101'
-  )[0].confCase;
+  const male = useMemo(() => {
+    return data?.item.filter(
+      (covid: AgeGenderType) =>
+        covid.gubun === '남성' && covid.stateDt === `${selected}`
+    )[0].confCase;
+  }, [selected]);
+
+  const female = useMemo(() => {
+    return data?.item.filter(
+      (covid: AgeGenderType) =>
+        covid.gubun === '여성' && covid.stateDt === `${selected}`
+    )[0].confCase;
+  }, [selected]);
 
   const chartData = {
     labels: ['남', '여'],
@@ -88,7 +90,7 @@ const ByGender = ({ data }: AgeGenderDataType) => {
 export default ByGender;
 
 const ChartWrap = styled(S.ChartWrap)`
-  padding: 0;
+  padding-left: 0;
   border-left: 1px solid rgba(204, 204, 204, 0.5);
 `;
 

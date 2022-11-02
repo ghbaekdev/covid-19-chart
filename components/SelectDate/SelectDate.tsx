@@ -14,7 +14,7 @@ const SelectDate = ({ labels, handleSelected, selected }: labelsType) => {
   return (
     <SelectBox>
       <SelectTitle onClick={() => setSelectModal(!selectModal)}>
-        {selected}
+        {`${selected?.slice(4, 6)}/${selected?.slice(6, 8)}`}
         <Image alt="arrow" src={arrow} />
       </SelectTitle>
       {selectModal && (
@@ -27,7 +27,7 @@ const SelectDate = ({ labels, handleSelected, selected }: labelsType) => {
                     handleSelected(option);
                     setSelectModal(!selectModal);
                   }}>
-                  {option}
+                  {`${option?.slice(4, 6)}/${option?.slice(6, 8)}`}
                 </button>
               </SelectOption>
             );
@@ -50,7 +50,6 @@ export const SelectOption = styled.li`
     line-height: 16px;
     width: 100%;
     text-align: left;
-    padding: 0 14px;
     border: 0;
     background: none;
     border-radius: 0;
@@ -73,7 +72,7 @@ export const SelectGame = styled.ul`
 const SelectBox = styled.section`
   position: absolute;
   top: 0px;
-  left: 270px;
+  left: 340px;
 `;
 
 const SelectTitle = styled.button`
