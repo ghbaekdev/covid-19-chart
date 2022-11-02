@@ -1,12 +1,20 @@
 import type { NextPage } from 'next';
-import Sidebar from '../components/Sidebar/Sidebar';
+import styled from 'styled-components';
+import ByDate from '../components/ByDate/ByDate';
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Sidebar />
-    </div>
+    <>
+      <Dashboard>
+        <ByDate />
+      </Dashboard>
+    </>
   );
 };
 
 export default Home;
+
+export const Dashboard = styled.div`
+  width: 1165px;
+  height: 976px;
+`;

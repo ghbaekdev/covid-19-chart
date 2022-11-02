@@ -4,8 +4,12 @@ import Image from 'next/image';
 import DBDlogo from '../../public/assets/DBDlogo.svg';
 import { SIDEBAR_LINKS } from '../../public/data/SidebarLinks ';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Sidebar = () => {
+  const router = useRouter();
+  console.log(router.pathname);
+
   return (
     <SidebarWrap>
       <LogoBox>
@@ -19,10 +23,25 @@ const Sidebar = () => {
               <Categories>
                 {img && (
                   <div>
-                    <Image alt="category logo" src={img} />
+                    <Image
+                      alt="category logo"
+                      src={img}
+                      style={{
+                        filter: `${
+                          url === router.pathname
+                            ? 'opacity(0.5) drop-shadow(0 0 0 #2878f0)'
+                            : 'opacity(0.5) drop-shadow(0 0 0 #3c3c46)'
+                        }`,
+                      }}
+                    />
                   </div>
                 )}
-                {title && <span>{title}</span>}
+                <span
+                  style={{
+                    color: `${url === router.pathname ? '#2878F0' : '#3C3C46'}`,
+                  }}>
+                  {title}
+                </span>
               </Categories>
             </Link>
           );

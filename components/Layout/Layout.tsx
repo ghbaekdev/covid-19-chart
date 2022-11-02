@@ -3,11 +3,13 @@ import Sidebar from '../Sidebar/Sidebar';
 
 export default function Layout({ children }) {
   return (
-    <>
+    <MainWrap>
       <Sidebar />
-      <MainWrap>{children}</MainWrap>
-    </>
+      {children}
+    </MainWrap>
   );
 }
 
-const MainWrap = styled.div``;
+const MainWrap = styled.div`
+  display: flex;
+`;
