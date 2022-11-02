@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import styled from 'styled-components';
+import ByAge from '../components/ByAge/ByAge';
 import ByDate from '../components/ByDate/ByDate';
 
 const Home: NextPage = () => {
@@ -7,6 +8,7 @@ const Home: NextPage = () => {
     <>
       <Dashboard>
         <ByDate />
+        <ByAge />
       </Dashboard>
     </>
   );

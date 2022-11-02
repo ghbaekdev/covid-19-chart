@@ -8,13 +8,22 @@ import {
   Chart as ChartJS,
   CategoryScale,
   LinearScale,
-  PointElement,
-  LineElement,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
 } from 'chart.js';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
-interface itemType {
+export interface itemType {
   decideCnt: string;
   stateDt: string;
   stateTime: string;
@@ -79,6 +88,7 @@ export default ByDate;
 
 const ByDateWrap = styled.div`
   width: 1164px;
+  padding: 0 10px;
 `;
 
 const DateHeader = styled.header`
