@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
-import Layout from '../components/Layout.tsx/Layout';
+import Layout from '../components/Layout/Layout';
 
 const queryClient = new QueryClient({
   defaultOptions: {

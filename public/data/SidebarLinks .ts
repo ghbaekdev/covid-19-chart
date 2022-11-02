@@ -1,7 +1,7 @@
-import Dashboard from '../assets/dashboard.svg';
-import Members from '../assets/members.svg';
-import Insight from '../assets/insight.svg';
-import Calender from '../assets/calendar.svg';
+import Dashboard from '../assets/dashboard.png';
+import Members from '../assets/members.png';
+import Insight from '../assets/insight.png';
+import Calender from '../assets/calendar.png';
 
 export const SIDEBAR_LINKS = [
   {
@@ -17,16 +17,16 @@ export const SIDEBAR_LINKS = [
   {
     title: 'Members',
     img: Members,
-    url: 'members',
+    url: '/members',
   },
   {
-    title: '',
+    title: 'Insight',
     img: Insight,
-    url: 'insight',
+    url: '/insight',
   },
   {
     title: 'Calendar',
     img: Calender,
-    url: 'calendar',
+    url: '/calendar',
   },
 ];
