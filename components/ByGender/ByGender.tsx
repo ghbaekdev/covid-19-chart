@@ -11,11 +11,23 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const options = {
   padding: '0px',
-  responsive: false,
+  responsive: true,
   maintainAspectRatio: false,
   defaultFontSize: '14px',
   width: '385',
   height: '249',
+  plugins: {
+    legend: {
+      position: 'bottom' as const,
+      labels: {
+        padding: 35,
+        font: {
+          lineHeight: 1,
+          size: 12,
+        },
+      },
+    },
+  },
 };
 
 const ByGender = ({ data }: AgeGenderDataType) => {
@@ -44,7 +56,7 @@ const ByGender = ({ data }: AgeGenderDataType) => {
       {
         label: '# of Votes',
         data: [female, male],
-        backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+        backgroundColor: ['rgba(54, 162, 235, 0.8)', 'rgba(255, 99, 132, 0.8)'],
         borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
         borderWidth: 1,
       },
@@ -60,13 +72,14 @@ const ByGender = ({ data }: AgeGenderDataType) => {
       <S.ChartHeader>
         <span>일자별 성별 확진자 수</span>
       </S.ChartHeader>
+
       <ChartBox>
-        <Doughnut data={chartData} options={options} />
         <SelectDate
           labels={labels}
           handleSelected={handleSelected}
           selected={selected}
         />
+        <Doughnut data={chartData} options={options} />
       </ChartBox>
     </ChartWrap>
   );
@@ -83,4 +96,6 @@ const ChartBox = styled.div`
   display: flex;
   position: relative;
   padding: 50px;
+  width: 385px;
+  height: 249px;
 `;

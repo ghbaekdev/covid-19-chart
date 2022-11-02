@@ -35,6 +35,16 @@ const ByDate = ({ data }: DateListType) => {
 
   const options = {
     responsive: false,
+    elements: {
+      bar: {
+        borderWidth: 1,
+      },
+    },
+    options: {
+      layout: {
+        padding: 20,
+      },
+    },
     plugins: {
       legend: {
         display: false,

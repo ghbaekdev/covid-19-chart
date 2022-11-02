@@ -16,18 +16,17 @@ const options = {
   indexAxis: 'y' as const,
   plugins: {
     legend: {
+      position: 'bottom' as const,
       labels: {
-        padding: 5,
+        padding: 15,
         font: {
-          family: "'Noto Sans KR', 'serif'",
           lineHeight: 1,
           size: 12,
         },
       },
     },
   },
-
-  responsive: false,
+  responsive: true,
   scales: {
     x: {
       stacked: true,
@@ -49,7 +48,7 @@ const ByAge = ({ data }: AgeGenderDataType) => {
     )
     .sort();
   const filterDate = new Set(stateDt);
-  const labels = [...filterDate];
+  const labels = [...filterDate].slice(0, 5);
 
   const filterAge = (age: string) => {
     return data?.item
@@ -82,11 +81,13 @@ const ByAge = ({ data }: AgeGenderDataType) => {
       <ChartHeader>
         <span>일자별 연령대 확진자 수</span>
       </ChartHeader>
-      <Bar
-        data={chartData}
-        options={options}
-        style={{ width: '358px', height: '249px' }}
-      />
+      <ChartBox>
+        <Bar
+          data={chartData}
+          options={options}
+          style={{ width: '100%', height: '100%' }}
+        />
+      </ChartBox>
     </ChartWrap>
   );
 };
@@ -111,4 +112,10 @@ export const ChartHeader = styled.header`
     font-weight: 500;
     margin-left: 37px;
   }
+`;
+
+const ChartBox = styled.div`
+  width: 358px;
+  height: 249px;
+  margin: 58px 0 0 126px;
 `;
