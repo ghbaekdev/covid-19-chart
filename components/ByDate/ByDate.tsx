@@ -13,6 +13,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { DateDataType, DateListType } from '../../types/types';
 
 ChartJS.register(
   CategoryScale,
@@ -23,19 +24,14 @@ ChartJS.register(
   Legend
 );
 
-export interface itemType {
-  decideCnt: string;
-  stateDt: string;
-  stateTime: string;
-}
-
-const ByDate = () => {
-  const { data, isLoading } = useQuery(['getbydate'], () => getCovidDecide());
+const ByDate = ({ data }: DateListType) => {
   const labels = data?.item
-    .map((covid: itemType) => covid.stateDt)
-    .sort()
-    .map((el) => `${el.slice(4, 6)}/${el.slice(6, 8)}`);
-  const decideCnt = data?.item.map((covid: itemType) => covid.decideCnt);
+    .map(
+      (covid: DateDataType) =>
+        `${covid.stateDt.slice(4, 6)}/${covid.stateDt.slice(6, 8)}`
+    )
+    .sort();
+  const decideCnt = data?.item.map((covid: DateDataType) => covid.decideCnt);
 
   const options = {
     responsive: false,
@@ -70,8 +66,6 @@ const ByDate = () => {
     ],
   };
 
-  if (isLoading) return <Loading />;
-
   return (
     <ByDateWrap>
       <DateHeader>
@@ -89,6 +83,7 @@ export default ByDate;
 const ByDateWrap = styled.div`
   width: 1164px;
   padding: 0 10px;
+  margin-bottom: 60px;
 `;
 
 const DateHeader = styled.header`
@@ -105,5 +100,5 @@ const DateHeader = styled.header`
 const ChartBox = styled.div`
   width: 839px;
   height: 273px;
-  margin: 74px auto 0 auto;
+  margin: 74px 0 0 86px;
 `;
