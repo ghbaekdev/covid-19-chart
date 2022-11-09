@@ -13,7 +13,7 @@ const Loading = () => {
 };
 
 Loading.defaultProps = {
-  dotColor: '#fff',
+  dotColor: '#e5e4e4',
   dotSize: '30px',
 };
 
@@ -64,6 +64,5 @@ export const LoadingBar = styled.div`
 export const Dot = styled.div`
   width: ${({ theme }) => theme.dotSize};
   height: ${({ theme }) => theme.dotSize};
-  background-color: ${(props) => props.bgColor};
   border-radius: 50%;
 `;

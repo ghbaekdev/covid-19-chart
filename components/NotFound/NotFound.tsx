@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
-import PageNotFoundImage from '../public/assets/404error.png';
+import PageNotFoundImage from '../../public/assets/404error.png';
 import Image from 'next/image';
 import Link from 'next/link';
 

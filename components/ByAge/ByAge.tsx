@@ -48,7 +48,7 @@ const ByAge = ({ data }: AgeGenderDataType) => {
     )
     .sort();
   const filterDate = new Set(stateDt);
-  const labels = [...filterDate].slice(0, 5);
+  const labels = Array.from(filterDate).slice(0, 5);
 
   const filterAge = (age: string) => {
     return data?.item
